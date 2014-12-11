@@ -1,6 +1,6 @@
 ## Interface: 60000
 ## Title: HudMap Warlords Of Draenor Encounters
-## Notes: Adds Cataclysm encounters to HudMap.
+## Notes: Adds Warlords Of Draenor encounters to HudMap.
 ## Author: Cowpwned@US-Darkspear, 0wn3d
 ## Hudmap Author: Antiarc
 ## Dependencies: HudMap
