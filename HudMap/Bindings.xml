@@ -1,0 +1,11 @@
+<Bindings>
+	<Binding name="TOGGLE_HUDMAP" header="HUDMAP">
+		HudMap:Toggle()
+	</Binding>
+	<Binding name="HUDMAP_ZOOMIN">
+		HudMap:SetZoom(nil, -5)
+	</Binding>	
+	<Binding name="HUDMAP_ZOOMOUT">
+		HudMap:SetZoom(nil, 5)
+	</Binding>	
+</Bindings>

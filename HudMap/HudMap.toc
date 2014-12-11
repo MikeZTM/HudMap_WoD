@@ -1,0 +1,50 @@
+## Interface: 40200
+## Title: HudMap
+## Notes: Heads-up minimap display
+## Author: Antiarc
+## OptionalDeps: Ace3, TomTom, QuestHelper, GatherMate
+## SavedVariables: HudMapDB, HudMapDebug
+## X-Curse-Packaged-Version: v1.2-5-gf5f7fbf
+## X-Curse-Project-Name: HudMap
+## X-Curse-Project-ID: hudmap
+## X-Curse-Repository-ID: wow/hudmap/mainline
+## X-Curse-Packaged-Version: v1.4b-3-g3f9f6c4
+## X-Curse-Project-Name: HudMap
+## X-Curse-Project-ID: hudmap
+## X-Curse-Repository-ID: wow/hudmap/mainline
+
+embeds.xml
+
+# Localization
+localization\enUS.lua
+localization\frFR.lua
+localization\deDE.lua
+localization\esES.lua
+localization\esMX.lua
+localization\koKR.lua
+localization\ruRU.lua
+localization\zhCN.lua
+localization\zhTW.lua
+
+# Core
+# HudMap.xml
+HudMap.lua
+
+# Modules
+# Load these in the order that they should show up in the options menu.
+# modules\example.lua
+modules\encounters.lua
+modules\battlegrounds.lua
+modules\playerDot.lua
+modules\party.lua
+modules\ranges.lua
+modules\aoeHealing.lua
+modules\totems.lua
+modules\ping.lua
+modules\compass.lua
+
+## Encounters modules
+modules\zones\icecrown.lua
+modules\zones\tourney.lua
+modules\zones\ulduar.lua
+modules\zones\sanctum.lua

@@ -1,0 +1,6 @@
+Ben:
+	- -Added patch from ticket 118 to allow HudMap to handle zones that Astrolabe is missing
+thelibrarian:
+	- COMBAT_LOG_EVENT_UNFILTERED fix for 4.2
+Ben:
+	- H LK Fixes and nil check for GuidToMobID
