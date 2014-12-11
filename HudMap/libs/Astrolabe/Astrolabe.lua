@@ -1083,7 +1083,16 @@ local function activate( newInstance, oldInstance )
 		newInstance.HarvestedMapData = {};
 		local HarvestedMapData = newInstance.HarvestedMapData;
 		
-		newInstance.ContinentList = { GetMapContinents() };
+		newInstance.ContinentList = { };
+		local continentsP6 = { GetMapContinents() };
+		local index = 0;
+		for i = 2, #continentsP6, 2 do
+			index = index + 1;
+			newInstance.ContinentList[index] = continentsP6[i];
+		end
+		for key, val in pairs(newInstance.ContinentList) do
+			DEFAULT_CHAT_FRAME:AddMessage("#" .. key .. ": " .. val);
+		end
 		for C in pairs(newInstance.ContinentList) do
 			local zones = { GetMapZones(C) };
 			newInstance.ContinentList[C] = zones;
