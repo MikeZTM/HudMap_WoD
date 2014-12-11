@@ -1090,9 +1090,6 @@ local function activate( newInstance, oldInstance )
 			index = index + 1;
 			newInstance.ContinentList[index] = continentsP6[i];
 		end
-		for key, val in pairs(newInstance.ContinentList) do
-			DEFAULT_CHAT_FRAME:AddMessage("#" .. key .. ": " .. val);
-		end
 		for C in pairs(newInstance.ContinentList) do
 			local zones = { GetMapZones(C) };
 			newInstance.ContinentList[C] = zones;

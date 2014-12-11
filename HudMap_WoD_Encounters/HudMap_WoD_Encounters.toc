@@ -1,5 +1,5 @@
 ## Interface: 60000
-## Title: HudMap Cataclysm Encounters
+## Title: HudMap Warlords Of Draenor Encounters
 ## Notes: Adds Cataclysm encounters to HudMap.
 ## Author: Cowpwned@US-Darkspear, 0wn3d
 ## Hudmap Author: Antiarc
@@ -20,7 +20,4 @@ localization\esES.lua
 localization\esMX.lua
 localization\zhCN.lua
 
-blackwing.lua
-bastion.lua
-firelands.lua
 highmaul.lua

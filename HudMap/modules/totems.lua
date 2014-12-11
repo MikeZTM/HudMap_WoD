@@ -30,32 +30,22 @@ local totemRanges = {
 	{
 		[3599]  = 20,	-- Searing
 		[8190]  = 8,	-- Magma
-		[8227]  = 40,	-- Flametongue
 	},
 	
 	-- Earth
 	{
 		[2484]  = 10,	-- Earthbind
-		[5730]  = 8,	-- Stoneclaw
-		[8071]  = 40,	-- Stoneskin
-		[8075]  = 40,	-- Strength of Earth
 		[8143]  = 30,	-- Tremor
 	},	
 	
 	-- Water
 	{
-		[5675]  = 40,	-- Mana Spring
-		[87718] = 30, -- Totem of Tranquil Mind
-		[16190] = 40,	-- Mana Tide
 		[5394]  = 30,	-- Healing Stream
-		[8184]  = 30,	-- Elemental Resist
 	},
 	
 	-- Wind
 	{
-		[3738] = 40,	-- Wrath of Air
 		[8177]  = 20,	-- Grounding
-		[8512]  = 40,	-- Windfury
 		[98008] = 10,	-- Spirit Link
 	},
 	
@@ -409,26 +399,7 @@ function mod:FreeCircle(cbk, c)
 end
 
 function mod:UpdateTotemInformation()
-	wipe(effectiveTotemRanges)
-	wipe(totemNames)
-	local points = select(5, GetTalentInfo(2, 7))
-	local boost = 1 + (0.15 * points)
-
-	for set, totems in ipairs(totemRanges) do
-		for id, range in pairs(totems) do 
-			local name, _, icon = GetSpellInfo(id)
-			totemNames[name] = id
-			range = range * boost
-
-			for talent_name, talent_data in pairs(talents) do
-				if talent_data.totem_ids[id] then
-					local points = select(5, GetTalentInfo(talent_data.tab_index, talent_data.talent_index))
-					range = range + (points * talent_data.range_per_point)
-				end
-			end
-			effectiveTotemRanges[name] = range
-		end
-	end
+	
 end
 
 function mod:PLAYER_TOTEM_UPDATE(event, slot)
