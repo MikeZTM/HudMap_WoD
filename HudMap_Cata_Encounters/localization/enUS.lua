@@ -31,3 +31,6 @@ L["Beth'tilac"] = true
 L["Majordomo Staghelm"] = true
 L["Firelands"] = true
 
+L["Imperator Mar'gok"] = "Imperator Mar'gok"
+L["Mark of Chaos Radius"] = "Mark of Chaos Radius"
+L["Highmaul"] = "Highmaul"

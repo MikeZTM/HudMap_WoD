@@ -24,3 +24,4 @@ L["Wrack Radius"] = "毀壞半徑" -- Needs review
 L["Wrack Start"] = "毀壞開始"
 L["Imperator Mar'gok"] = "統治者瑪爾戈克"
 L["Mark of Chaos Radius"] = "混沌印記半徑"
+L["Highmaul"] = "天槌"

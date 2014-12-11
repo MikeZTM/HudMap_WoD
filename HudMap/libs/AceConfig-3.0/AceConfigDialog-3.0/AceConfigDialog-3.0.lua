@@ -1,10 +1,10 @@
 --- AceConfigDialog-3.0 generates AceGUI-3.0 based windows based on option tables.
 -- @class file
 -- @name AceConfigDialog-3.0
--- @release $Id: AceConfigDialog-3.0.lua 1126 2014-11-10 06:38:01Z nevcairiel $
+-- @release $Id: AceConfigDialog-3.0.lua 998 2010-12-01 18:39:53Z nevcairiel $
 
 local LibStub = LibStub
-local MAJOR, MINOR = "AceConfigDialog-3.0", 60
+local MAJOR, MINOR = "AceConfigDialog-3.0", 54
 local AceConfigDialog, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not AceConfigDialog then return end
@@ -21,10 +21,10 @@ local gui = LibStub("AceGUI-3.0")
 local reg = LibStub("AceConfigRegistry-3.0")
 
 -- Lua APIs
-local tconcat, tinsert, tsort, tremove, tsort = table.concat, table.insert, table.sort, table.remove, table.sort
+local tconcat, tinsert, tsort, tremove = table.concat, table.insert, table.sort, table.remove
 local strmatch, format = string.match, string.format
 local assert, loadstring, error = assert, loadstring, error
-local pairs, next, select, type, unpack, wipe, ipairs = pairs, next, select, type, unpack, wipe, ipairs
+local pairs, next, select, type, unpack, wipe = pairs, next, select, type, unpack, wipe
 local rawset, tostring, tonumber = rawset, tostring, tonumber
 local math_min, math_max, math_floor = math.min, math.max, math.floor
 
@@ -542,16 +542,16 @@ local function OptionOnMouseOver(widget, event)
 	
 	if descStyle and descStyle ~= "tooltip" then return end
 	
-	GameTooltip:SetText(name, 1, .82, 0, true)
+	GameTooltip:SetText(name, 1, .82, 0, 1)
 	
 	if opt.type == "multiselect" then
-		GameTooltip:AddLine(user.text, 0.5, 0.5, 0.8, true)
+		GameTooltip:AddLine(user.text,0.5, 0.5, 0.8, 1)
 	end	
 	if type(desc) == "string" then
-		GameTooltip:AddLine(desc, 1, 1, 1, true)
+		GameTooltip:AddLine(desc, 1, 1, 1, 1)
 	end
 	if type(usage) == "string" then
-		GameTooltip:AddLine("Usage: "..usage, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, true)
+		GameTooltip:AddLine("Usage: "..usage, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1)
 	end
 
 	GameTooltip:Show()
@@ -580,7 +580,6 @@ local function confirmPopup(appName, rootframe, basepath, info, message, func, .
 	t.text = message
 	t.button1 = ACCEPT
 	t.button2 = CANCEL
-	t.preferredIndex = STATICPOPUP_NUMDIALOGS
 	local dialog, oldstrata
 	t.OnAccept = function()
 		safecall(func, unpack(t))
@@ -1185,14 +1184,8 @@ local function FeedOptions(appName, options,container,rootframe,path,group,inlin
 						control.width = "fill"
 
 						control:PauseLayout()
-						local optionValue = GetOptionsMemberValue("get",v, options, path, appName)
-						local t = {}
+						local optionValue = GetOptionsMemberValue("get",v, options, path, appName, value)
 						for value, text in pairs(values) do
-							t[#t+1]=value
-						end
-						tsort(t)
-						for k, value in ipairs(t) do
-							local text = values[value]
 							local radio = gui:Create("CheckBox")
 							radio:SetLabel(text)
 							radio:SetUserData("value", value)
@@ -1322,7 +1315,7 @@ local function FeedOptions(appName, options,container,rootframe,path,group,inlin
 				elseif v.type == "color" then
 					control = gui:Create("ColorPicker")
 					control:SetLabel(name)
-					control:SetHasAlpha(GetOptionsMemberValue("hasAlpha",v, options, path, appName))
+					control:SetHasAlpha(v.hasAlpha)
 					control:SetColor(GetOptionsMemberValue("get",v, options, path, appName))
 					control:SetCallback("OnValueChanged",ActivateControl)
 					control:SetCallback("OnValueConfirmed",ActivateControl)
@@ -1448,10 +1441,10 @@ local function TreeOnButtonEnter(widget, event, uniquevalue, button)
 		GameTooltip:SetPoint("LEFT",button,"RIGHT")
 	end
 
-	GameTooltip:SetText(name, 1, .82, 0, true)
+	GameTooltip:SetText(name, 1, .82, 0, 1)
 	
 	if type(desc) == "string" then
-		GameTooltip:AddLine(desc, 1, 1, 1, true)
+		GameTooltip:AddLine(desc, 1, 1, 1, 1)
 	end
 	
 	GameTooltip:Show()
@@ -1815,14 +1808,6 @@ function AceConfigDialog:Open(appName, container, ...)
 	end
 	for n = 1, select("#",...) do
 		tinsert(path, (select(n, ...)))
-	end
-	
-	local option = options
-	if type(container) == "table" and container.type == "BlizOptionsGroup" and #path > 0 then
-		for i = 1, #path do
-			option = options.args[path[i]]
-		end
-		name = format("%s - %s", name, GetOptionsMemberValue("name", option, options, path, appName))
 	end
 	
 	--if a container is given feed into that

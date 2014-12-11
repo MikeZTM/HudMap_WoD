@@ -1,4 +1,4 @@
-## Interface: 40200
+## Interface: 60000
 ## Title: HudMap Cataclysm Encounters
 ## Notes: Adds Cataclysm encounters to HudMap.
 ## Author: Cowpwned@US-Darkspear, 0wn3d
