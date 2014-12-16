@@ -305,7 +305,12 @@ local spellMap = {
 	[61295] = "healer",   -- Riptide
 	[974]   = "healer",   -- Earth Shield
 	[17364] = "dps",   		-- Stormstrike
-	[51490] = "dps"       -- Thunderstorm
+	[51490] = "dps",       -- Thunderstorm
+	
+	-- Monk
+	[115180] = "tank",   -- Dizzying Haze
+	[115175]   = "healer",   -- Soothing Mist
+	[113656] = "dps"  		-- Fists of Fury
 }
 
 local healthBarPool = {}

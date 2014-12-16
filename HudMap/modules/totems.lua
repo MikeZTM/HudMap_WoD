@@ -40,7 +40,7 @@ local totemRanges = {
 	
 	-- Water
 	{
-		[5394]  = 30,	-- Healing Stream
+		[5394]  = 40,	-- Healing Stream
 	},
 	
 	-- Wind

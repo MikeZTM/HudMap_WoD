@@ -9,3 +9,4 @@ L["Mark of Chaos Radius"] = true
 L["Highmaul"] = true
 L["Kargath Bladefist"] = true
 L["Berserker Rush"] = true
+L["Dummy"] = true
